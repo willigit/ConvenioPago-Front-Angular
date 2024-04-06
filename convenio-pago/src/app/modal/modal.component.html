@@ -1,0 +1,50 @@
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Registro de Convenio </h3><br/>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="onCloseModal()"
+          ></button>
+        </div>
+        <div class="modal-header">
+            <div class="modal-title">Cliente: {{ data.nombre }} </div>
+            <br/>   
+            <div class="modal-title">Valor Deuda: {{ data.montoDeuda }}</div>
+        </div>          
+
+        <div class="modal-body">                   
+          <span>Valor Convenio:</span>
+          <input type="text" #valorConvenio class="form-control" placeholder="0.00" name="valorConvenio" ngModel type="number" pattern="[0-9]*">    
+          <span>Observacion:</span>
+          <input type="text" #motivo class="form-control" placeholder="Ingrese motivo" name="motivo" ngModel>    
+          <p style="font-size: 0px;">{{valorConvenio.value}}</p> 
+          <p style="font-size: 0px;">{{motivo.value}}</p> 
+        </div>
+        <div class="modal-footer">
+              <div *ngIf="mensaje" class="alert alert-danger" role="alert">
+                {{ mensaje}}
+              </div>
+              <div *ngIf="mensajeOk" class="alert alert-success" role="alert">
+                {{ mensajeOk}}
+              </div>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="onCloseModal()"
+          >
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="GuardarRegistro(data,valorConvenio.value, motivo.value )">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
